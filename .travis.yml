@@ -3,11 +3,17 @@ rbenv:
 - 2.5.3
 addons:
   postgresql: 9.6
+before_script:
+  - psql -c 'create database viewing_party_test;' -U postgres
 script:
-- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rails db:{reset,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-  app:
-  run: rails db:migrate
+    secure: kaJHaR9mHinamz3nfDodhB7h8Vje2L0RA889KgpVikhyLDpS2zmg9ljz++aUqiDxo1a8OkmdXjk1SVR6olgRKl1pSDSm02Kha7uhpgpxuM6uRVoTQvVxcLmAU0CskyGO3vIyx0hZ8FwKD0t9b+OixhhBAX3iPGx71MMXCMLGubMAmvl5/NOmcuLenTd+x0MJXkDBQIUODK5xF3RI8XmfrgqRW9IZfcqBSlrBidJro5j6uCp2mACxKoMN/8BHK9ya1GriMDOjEZujLicF0qvo93IKIjg0s0g4ityWtVuMO9WqsVcN/wNcdGuRbOk35MdpM1hra6lO1uk6SemfEYQ5zxuUUFNiyAyZTu7/TKqO1lD13NlCK+htd3xoM4f7Flf0kuF/pQeMmRdclvnkm311H4eFswBzUbkLnaO2p77UiM4Ay9Is79Z0wQkbKehV94eIRZqKD2+sKGMTzp/TflTHSgQ/wYGnm7gSluHgUKCX7X60X/gQseozi4tWgQ+IIsaOrQSvaA4EJZ5mfDGVYJLZ2ETGJlgP4cLEcmXYQE8ZQaMtJcnoEvohtUu59z+k345Pts9WbQa/MJkbFTXbf2bWnCtKkpd5LorH63Cs/TzaR0NSVOMs6zA72fzWkS4lUT4ob1MTIaXz7zG09yH4jWiEp1wQlUStvRPUROK2wnmsCPo=
+  app: viewing-party-cd
+  on:
+    repo: sciencefixion/viewing_party
+    branch: main
+  skip_cleanup: 'true'
