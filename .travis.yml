@@ -6,7 +6,7 @@ addons:
 before_script:
   - psql -c 'create database viewing_party_test;' -U postgres
 script:
-- bundle exec rails db:{reset,migrate} RAILS_ENV=test
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
