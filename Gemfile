@@ -15,14 +15,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
-gem 'figaro'
 gem 'faraday'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'pry'
   gem 'travis'
   gem 'factory_bot_rails'
+  gem 'figaro'
 end
 
 group :development do
@@ -37,6 +38,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
