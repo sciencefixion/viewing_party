@@ -61,15 +61,64 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
 
+def stub_omniauth
+  #set OmniAuth to run in test mode
+  OmniAuth.config.test_mode = true
+  #provide a set of fake oauth data that omniauth will use when a user tries to authenticate
+  omniauth_google_hash = {
+    provider: 'google_oauth2',
+    uid: '100000000000000000000',
+    info: {
+      name: 'Walter Sobchak',
+      email: 'walter@sobchak_security.com',
+      first_name: 'Walter',
+      last_name: 'Sobchak',
+      image: 'https://lh4.googleusercontent.com/photo.jpg',
+      urls: {
+        google: 'https://plus.google.com/+WalterSobchak'
+      }
+    },
+    credentials: {
+      token: 'TOKEN',
+      refresh_token: 'REFRESH_TOKEN',
+      expires_at: 1496120719,
+      expires: true
+    },
+    extra: {
+      id_token: 'ID_TOKEN',
+      id_info: {
+        azp: 'APP_ID',
+        aud: 'APP_ID',
+        sub: '100000000000000000000',
+        email: 'john@example.com',
+        email_verified: true,
+        at_hash: 'HK6E_P6Dh8Y93mRNtsDB1Q',
+        iss: 'accounts.google.com',
+        iat: 1496117119,
+        exp: 1496120719
+      },
+      raw_info: {
+        sub: '100000000000000000000',
+        name: 'Walter Sobchak',
+        given_name: 'Walter',
+        family_name: 'Sobchak',
+        profile: 'https://plus.google.com/+WalterSobchak',
+        picture: 'https://lh4.googleusercontent.com/photo.jpg?sz=50',
+        email: 'walter@sobchak_security.com',
+        email_verified: 'true',
+        locale: 'en',
+        hd: 'company.com'
+      }
+    }
+  }
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(omniauth_google_hash)
+end
 
-  def stub_omniauth
-    #set OmniAuth to run in test mode
-    OmniAuth.config.test_mode = true
-    #provide a set of fake oauth data that omniauth will use when a user tries to authenticate
-    OmniAuth.config.mock_auth[:google] =
-    OmniAuth::AuthHash.new({
-
-      })
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
