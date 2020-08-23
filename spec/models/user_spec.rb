@@ -59,8 +59,7 @@ RSpec.describe User, type: :model do
     new_user = User.first
 
     expect(new_user.uid).to eq('100000000000000000000')
-    expect(new_user.email).to eq('walter@sobchak_security.com')
-    expect(new_user.google_token).to eq('TOKEN')
-    expect(new_user.google_refresh_token).to eq('REFRESH_TOKEN')
+    expect(new_user.username).to eq('walter@sobchak_security.com')
+    
   end
 end
