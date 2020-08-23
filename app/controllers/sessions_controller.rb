@@ -10,6 +10,6 @@ class SessionsController < ApplicationController
     user.save
 
     session[:user_id] = user.id
-    redirect_to '/dashboard'
+    redirect_to '/'
   end
 end
