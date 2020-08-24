@@ -13,6 +13,7 @@ RSpec.describe "Welcome index page" do
     visit root_path
     expect(page).to have_link('Log In with Google')
     click_on 'Log In with Google'
+    expect(current_path).to eq("/dashboard")
     # expect(page).to have_content('Welcome user!')
     # expect(page).to have_link('Logout')
   end
