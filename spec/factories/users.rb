@@ -1,20 +1,13 @@
+require 'faker'
+
 FactoryBot.define do
   factory :user do
-    provider { "MyString" }
-    uid { "MyString" }
-    username { "MyString" }
-    google_token { "MyString" }
-    google_refresh_token { "MyString" }
+    provider { :google }
+    uid { Faker::Number.within(range: 100000..999999) }
+    sequence :username do |n|
+        "test#{n}@test.com"
+    end
+    google_token { Faker::Number.within(range: 100000..999999) }
+    google_refresh_token { Faker::Number.within(range: 100000..999999) }
   end
 end
-
-# FactoryBot.define do
-#   factory :user do
-#     # name     { Faker::FunnyName.name }
-#     uid      { Faker::Address.zip }
-#     password { "123456" }
-#     sequence :username do |n|
-#       "test#{n}@test.com"
-#     end
-#   end
-# end
