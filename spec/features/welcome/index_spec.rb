@@ -9,8 +9,6 @@ RSpec.describe "Welcome index page" do
   end
 
   it "allows user to log in with google oauth2" do
-    user = User
-
     stub_omniauth
     visit root_path
     expect(page).to have_link("Log In with Google")
