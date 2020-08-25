@@ -4,7 +4,7 @@
 
 <section class="friends">
   <h2>Friends</h2>
-  <%= form_tag "/friendship", method: :post %>
+  <%= form_tag "/friendships", method: :post %>
     <%= text_field_tag :username, "Enter your friend's email here:" %>
     <%= submit_tag "Add Friend" %>
   <br>
