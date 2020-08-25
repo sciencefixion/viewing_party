@@ -18,10 +18,13 @@ RSpec.describe 'Discover movies page' do
 
   it "displays a button to discover top-rated movies" do
     expect(page).to have_button("Discover Top-Rated Movies")
+    click_on "Discover Top-Rated Movies"
+    expect(current_path).to eq("/movies")
   end
 
   it "has a text field to enter keywords to find movies" do
     fill_in :search, with: "Spiderman"
     click_on "Find Movies"
+    expect(current_path).to eq("/movies")
   end
 end

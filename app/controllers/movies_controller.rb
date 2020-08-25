@@ -1,13 +1,15 @@
 class MoviesController < ApplicationController
   def index
-
-    conn = Faraday.new(url: "https://api.themoviedb.org/3/") do |faraday|
-      faraday.params[:api_key] = ENV['MOVIE_DB_API_KEY']
+    search_results = SearchResults.new
+    if params[:search].nil? == false
+      @movies = search_results.movie_search_results(params[:search])
+    else params[:q].nil? == false
+      @movies = search_results.top_rated_movies
     end
+  end
 
-    response = conn.get('')
-
-    json = JSON.parse(response.body, symbolize_names: true)
-    @movies = json[:]
+  def show
+    movie = SearchResults.new
+    @movie = movie.details(params[:id])
   end
 end
