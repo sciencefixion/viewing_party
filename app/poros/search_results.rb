@@ -15,6 +15,11 @@ class SearchResults
     movies.first(40)
   end
 
+  def details(movie_id)
+    json = service.movie_data(movie_id)
+    movie_result(json)
+  end
+
   private
   def service
     MovieService.new
