@@ -39,6 +39,8 @@ group :test do
   gem 'simplecov'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
