@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-  validates :friend, uniqueness: true, scope: :user, message: 'You have already added this friend'
+  validates :friend, uniqueness: { scope: :user, message: 'You have already added this friend' }
 
   def self.create_reciprocal_for_ids(user_id, friend_id)
     user_friendship = Friendship.create(user_id: user_id, friend_id: friend_id)
