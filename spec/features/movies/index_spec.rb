@@ -21,7 +21,6 @@ RSpec.describe "movies index page" do
   it "displays 40 top-rated movies" do
     visit "/movies"
     click_on "Discover Top-Rated Movies"
-
     expect(page).to have_content("Pulp Fiction")
     expect(page).to have_content("Vote Average: 8.5")
   end

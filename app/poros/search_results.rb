@@ -21,14 +21,18 @@ class SearchResults
   end
 
   def cast(movie_id)
-    json = service.cast(movie_id)
+    service.cast(movie_id)
   end
 
   def reviews(movie_id)
-    json = service.reviews(movie_id)
+    service.reviews(movie_id)
   end
 
+  delegate :cast, to: :service
+  delegate :reviews, to: :service
+
   private
+
   def service
     MovieService.new
   end

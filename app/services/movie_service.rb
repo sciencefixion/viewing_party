@@ -15,7 +15,7 @@ class MovieService
   end
 
   def db_top_rated_movies
-    json("movie/top_rated?")
+    json('movie/top_rated?')
   end
 
   def movie_data(movie_id)

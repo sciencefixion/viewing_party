@@ -16,12 +16,12 @@ class MovieResults
   end
 
   def format_runtime
-    "#{@runtime/60} hr #{@runtime % 60} min"
+    "#{@runtime / 60} hr #{@runtime % 60} min"
   end
 
   def ten_cast_members
     cast = search.cast(@id)
-    ten_cast_members = cast[:cast].first(10)
+    cast[:cast].first(10)
   end
 
   def reviews
@@ -38,10 +38,11 @@ class MovieResults
     @genres.each do |genre|
       genre_names << genre[:name]
     end
-    genre_names.join(", ")
+    genre_names.join(', ')
   end
 
   private
+
   def search
     SearchResults.new
   end
