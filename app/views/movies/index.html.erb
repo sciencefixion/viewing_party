@@ -1,0 +1,21 @@
+<h1><%= "Welcome #{current_user.username}!" %></h1>
+
+<%= button_to "Discover Top-Rated Movies", "/movies?q=top%20rated", method: :get %>
+
+<%= form_tag "/movies", method: :get do %>
+  <%= search_field_tag :search, "Search by movie title" %>
+  <%= submit_tag "Find Movies" %>
+<% end %>
+
+<% if @movies %>
+  <section class="movie-results"
+    <% if @movies.empty? == false %>
+      <% @movies.each do |movie| %>
+        <p><%= link_to movie.title, "/movies/#{movie.id}"%></p>
+        <p>Vote Average: <%= movie.vote_average %></p>
+      <% end %>
+    <% else %>
+      <h3>There are no movies that matched your search</h3>
+    <% end %>
+  </section>
+<% end %>
