@@ -1,10 +1,9 @@
 class MoviesController < ApplicationController
   def index
     search_results = SearchResults.new
-    if params[:search].nil? == false
+    if params[:search]
       @movies = search_results.movie_search_results(params[:search])
     else
-      params[:q].nil? == false
       @movies = search_results.top_rated_movies
     end
   end
