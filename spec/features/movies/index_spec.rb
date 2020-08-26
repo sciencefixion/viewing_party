@@ -27,7 +27,7 @@ RSpec.describe "movies index page" do
   end
 
   it "enables links to movie show page from each movie title" do
-    movie_id = #???
+    movie_id = 272
 
     visit "/movies"
 
