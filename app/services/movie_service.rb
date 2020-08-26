@@ -21,4 +21,12 @@ class MovieService
   def movie_data(movie_id)
     json("movie/#{movie_id}")
   end
+
+  def cast(movie_id)
+    json("movie/#{movie_id}/credits")
+  end
+
+  def reviews(movie_id)
+    json("movie/#{movie_id}/reviews")
+  end
 end
