@@ -28,9 +28,6 @@ class SearchResults
     service.reviews(movie_id)
   end
 
-  delegate :cast, to: :service
-  delegate :reviews, to: :service
-
   private
 
   def service
