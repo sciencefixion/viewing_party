@@ -20,6 +20,14 @@ class SearchResults
     movie_result(json)
   end
 
+  def cast(movie_id)
+    json = service.cast(movie_id)
+  end
+
+  def reviews(movie_id)
+    json = service.reviews(movie_id)
+  end
+
   private
   def service
     MovieService.new
