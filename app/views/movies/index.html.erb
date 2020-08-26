@@ -8,7 +8,7 @@
 <% end %>
 
 <% if @movies %>
-  <section class="top-rated-results"
+  <section class="movie-results"
     <% if @movies.empty? == false %>
     <% @movies.each do |movie| %>
       <p><%= link_to movie.title, "/movies/#{movie.id}"%></p>
