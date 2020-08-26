@@ -58,4 +58,37 @@ RSpec.describe "dashboard show page" do
     expect(page).to have_css(".viewing-parties")
     expect(page).to have_content("Viewing Parties")
   end
+
+  it "displays viewing parties that the user is invited to" do
+
+    # As an authenticated user,
+    # I should see the viewing parties I have been invited to with the following details:
+    #
+    # Movie Title
+    # Date and Time of Event
+    # Button to "Add to Calendar"
+
+    within ".viewing-parties-invited" do
+      expect(page).to have_content("Movie Title")
+      expect(page).to have_content("Date and Time of Event")
+      expect(page).to have_button("Add to Calendar")
+      # fix button route to use Google Calendar API
+    end
+  end
+
+  it "displays viewing parties the user created" do
+
+    # I should also see the viewing parties that I have created with the following details:
+    #
+    # Movie Title
+    # Date and Time of Event
+    # Details:
+    # When I click on "Add to Calendar" it should add the event to my Google calendar. It should also display a flash message indicating that it has been added.
+
+    within ".viewing-parties-created" do
+      expect(page).to have_content("Movie Title")
+      expect(page).to have_content("Date and Time of Event")
+      # test with vcr after creating viewing parties
+    end
+  end
 end
