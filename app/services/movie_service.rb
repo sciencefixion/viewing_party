@@ -1,10 +1,4 @@
 class MovieService
-  def conn
-    Faraday.new('https://api.themoviedb.org/3/') do |f|
-      f.params[:api_key] = ENV['movie_db_api_key']
-    end
-  end
-
   def json(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
@@ -28,5 +22,13 @@ class MovieService
 
   def reviews(movie_id)
     json("movie/#{movie_id}/reviews")
+  end
+
+  private
+
+  def conn
+    Faraday.new('https://api.themoviedb.org/3/') do |f|
+      f.params[:api_key] = ENV['MOVIE_DB_API_KEY']
+    end
   end
 end
