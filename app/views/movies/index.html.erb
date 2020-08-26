@@ -10,10 +10,10 @@
 <% if @movies %>
   <section class="movie-results"
     <% if @movies.empty? == false %>
-    <% @movies.each do |movie| %>
-      <p><%= link_to movie.title, "/movies/#{movie.id}"%></p>
-      <p>Vote Average: <%= movie.vote_average %></p>
-    <% end %>
+      <% @movies.each do |movie| %>
+        <p><%= link_to movie.title, "/movies/#{movie.id}"%></p>
+        <p>Vote Average: <%= movie.vote_average %></p>
+      <% end %>
     <% else %>
       <h3>There are no movies that matched your search</h3>
     <% end %>
