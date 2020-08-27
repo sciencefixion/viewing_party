@@ -6,7 +6,10 @@ class CreateParties < ActiveRecord::Migration[5.2]
       t.integer :duration_of_party
       t.datetime :start_time
       t.datetime :end_time
-      t.array :attendees
+      t.integer :attendees, array: true
+
+      t.timestamps
     end
+     add_index :users, :user_id
   end
 end
