@@ -9,12 +9,19 @@
     <input type="text" id="movie_title" name="movie_title" value="<%= @movie.title %>" readonly />
 
     <%= label_tag :duration_of_the_party %>
-    <%= text_field_tag :duration_of_the_party, "#{@movie.runtime}" %>
+    <%= text_field_tag :duration_of_the_party, @movie.runtime %>
 
+    <%= label_tag: :date_and_time %>
+    <input type="datetime-local" id="start_time" name="start_time"
 
-    <%= label_tag :rating%>
-    <%= text_field_tag :rating%>
-
-    <%= submit_tag 'Create Review' %>
+    <p>Invite your friends below:</p>
+    <% if current_user.friends.empty? %>
+      <p>You have no friends added to any viewing parties</p>
+    <% else %>
+      <% current_user.friends.each do |friend| %>
+        <%= collection_check_boxes(:user, :friends, current_user.friends, :id, :username) %>
+      <% end %>
+      <br>
+    <%= submit_tag 'Create Viewing Party' %>
   <% end %>
 </center>
