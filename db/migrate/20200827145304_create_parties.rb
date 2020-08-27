@@ -10,6 +10,6 @@ class CreateParties < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-     add_index :users, :user_id
+     add_index :users, :id
   end
 end

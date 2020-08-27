@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_003035) do
+ActiveRecord::Schema.define(version: 2020_08_27_145304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2020_08_25_003035) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
+  create_table "parties", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "movie_id"
+    t.integer "duration_of_party"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "attendees", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_parties_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -32,9 +44,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_003035) do
     t.string "google_refresh_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_users_on_id"
     t.index ["uid"], name: "index_users_on_uid"
     t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "friendships", "users"
+  add_foreign_key "parties", "users"
 end
