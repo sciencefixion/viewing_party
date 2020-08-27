@@ -35,6 +35,6 @@ class SearchResults
   end
 
   def movie_result(data)
-    MovieResults.new(data)
+    Movie.new(data)
   end
 end
