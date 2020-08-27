@@ -30,12 +30,14 @@ RSpec.describe "New viewing party page" do
     Friendship.create_reciprocal_for_ids(@user.id, friend2.id)
     Friendship.create_reciprocal_for_ids(@user.id, friend3.id)
 
-    visit '/viewing-party/new'
-    binding.pry
+    visit "/viewing-party/new/#{@movie_id}"
 
-
-    expect(page).to have_content(movie.title)
-    expect(page).to have_content(movie.runtime)
+    # save_and_open_page
+    # within '#movie_title' do
+    #
+    #   expect(page).to have_content(movie.title)
+    # end
+    # expect(page).to have_content(movie.runtime)
     expect(page).to have_content('When')
     expect(page).to have_content('test1@test.com')
     expect(page).to have_content('test2@test.com')

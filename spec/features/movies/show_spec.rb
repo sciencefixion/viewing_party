@@ -48,6 +48,6 @@ RSpec.describe "movie details show page" do
 
     click_on "Create a Viewing Party"
 
-    expect(current_path).to eq("/viewing-party/new")
+    expect(current_path).to eq("/viewing-party/new/#{movie_id}")
   end
 end
