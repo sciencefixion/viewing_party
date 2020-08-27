@@ -4,7 +4,4 @@ class PartiesController < ApplicationController
     @movie = Movie.new(movie_title: params[:title], duration: params[:runtime])
     # binding.pry
   end
-
-  def create
-  end
 end
